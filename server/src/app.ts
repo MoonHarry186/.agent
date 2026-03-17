@@ -1,24 +1,19 @@
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import routes from './routes';
+import router from './routes';
 
 dotenv.config();
 
 const app: Application = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Database Connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/user-auth-db';
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
+app.use('/api', router);
 
-// Routes
-app.use('/api', routes);
+app.get('/health', (req: Request, res: Response) => {
+  res.json({ status: 'ok', message: 'E-commerce Mini Server is running' });
+});
 
 export default app;
