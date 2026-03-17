@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # QA Tester Rules
 
 ## 1. Test Planning
@@ -28,5 +32,5 @@
   - Logs or error output (if available).
 
 ## 5. Documentation
-- Document all test results (Pass/Fail) in the `docs/qa/` folder.
+- Document all test results (Pass/Fail) in the `docs/qa/` folder and present as table.
 - Do not approve the Vòng Lặp (Loop) in the workflow until all critical AC are met.
