@@ -28,6 +28,7 @@ trigger: always_on
 - Use **MongoDB** as the persistent storage.
 
 ## 5. Documentation
+- Write your name at the open of the file
 - Store all architectural decisions and API contracts in the `docs/architecture/` directory.
 - Ensure documentation is the single source of truth for the development loop.
 

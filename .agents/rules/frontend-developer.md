@@ -67,5 +67,4 @@ trigger: always_on
 - **Branch Required**: You MUST NEVER code directly on the `main` or `master` branch.
 - **Naming Convention**: Use prefix `feature/...`, `bugfix/...`, `ui/...`.
 - Provide clear commit messages describing changes to the UI or Logic.
-- **QA Checklist Review**: You MUST review the corresponding `docs/qa/` checklist before marking a task as done to ensure all failed cases are addressed.
 - Always review code before merging.

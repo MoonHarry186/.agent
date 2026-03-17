@@ -38,10 +38,8 @@ trigger: always_on
   - Actual behavior.
   - Logs or error output (if available).
   - Guide human test
-- **Transient Error Logging**: Even if an error is small and fixed immediately (fixed on the fly), it MUST be logged in the QA checklist to maintain a complete history of quality.
-- **Checklist First**: The `docs/qa/` checklist is the primary tool for communicating bugs to the Developer. Do not rely on verbal/comment updates without updating the checklist.
 
 ## 5. Documentation
-
+- Write your name at the open of the file
 - Document all test results (Pass/Fail) in the `docs/qa/` folder and present as table.
 - Do not approve the Vòng Lặp (Loop) in the workflow until all critical AC are met.

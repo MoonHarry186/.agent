@@ -23,6 +23,7 @@ trigger: always_on
 - Highlight project risks (e.g., "Third-party API rate limits", "Complex data migration needed") and propose mitigations.
 
 ## 5. Artifacts and Tracking
+- Write your name at the open of the file
 - Store Task Breakdown lists in the `docs/management/` folder named `[feature-name]-tasks.md`.
 - Ensure the task list is clear enough for Humans or other Agents to select and execute seamlessly.
 

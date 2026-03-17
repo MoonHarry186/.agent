@@ -21,6 +21,7 @@ trigger: always_on
 - If complex logic is involved, define a simple Domain Model or Flowchart.
 
 ## 4. Documentation Standards
+- Write your name at the open of the file
 - Keep documentation concise and scannable.
 - Use markdown headers, bold text, and lists effectively.
 - Store all feature specifications in the `docs/features/` directory named as `[feature-name].md`.
