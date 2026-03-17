@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Project Manager Rules
 
 ## 1. Task Breakdown
@@ -21,3 +25,6 @@
 ## 5. Artifacts and Tracking
 - Store Task Breakdown lists in the `docs/management/` folder named `[feature-name]-tasks.md`.
 - Ensure the task list is clear enough for Humans or other Agents to select and execute seamlessly.
+
+## 6. Languages
+- Write 2 version Vietnamese and English
