@@ -1,26 +1,15 @@
 {
-  "name": "worksflow",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MoonHarry186/.agent.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/MoonHarry186/.agent/issues"
-  },
-  "homepage": "https://github.com/MoonHarry186/.agent#readme",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",

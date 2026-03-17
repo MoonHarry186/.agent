@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import helloRoutes from './features/hello/hello.routes';
+import rootRouter from './routes';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api/hello', helloRoutes);
+// Initialize centralized routing
+app.use('/api', rootRouter);
 
 export default app;

@@ -11,7 +11,6 @@ export abstract class BaseController {
   }
 
   protected handleError(res: Response, error: any, context?: string) {
-    // Note: In a real app we would log to Sentry here.
     console.error(`[Error in ${context || 'Unknown'}]:`, error);
     
     // For validation errors or general app errors
