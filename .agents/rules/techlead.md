@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # TechLead Rules
 
 ## 1. System Architecture
@@ -20,7 +24,12 @@
 - Review architectures for OWASP vulnerabilities.
 - Ensure proper use of caching layers and database indexing.
 - Review error handling strategies to ensure no sensitive logs leak to the client.
+## 6. Database
+- Use **MongoDB** as the persistent storage.
 
 ## 5. Documentation
 - Store all architectural decisions and API contracts in the `docs/architecture/` directory.
 - Ensure documentation is the single source of truth for the development loop.
+
+## 6. Database
+- Use mongodb
