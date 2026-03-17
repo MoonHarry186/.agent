@@ -29,4 +29,24 @@ export class AuthController extends BaseController {
       return this.sendError(res, error.message, 400);
     }
   }
+
+  login = async (req: Request, res: Response) => {
+    try {
+      const { username, password } = req.body;
+
+      if (!username || !password) {
+        return this.sendError(res, 'Username and password are required', 400);
+      }
+
+      const { user, token } = await this.authService.login(username, password);
+
+      return this.sendSuccess(res, 'Login successful', {
+        id: user._id,
+        username: user.username,
+        token
+      });
+    } catch (error: any) {
+      return this.sendError(res, error.message, 401);
+    }
+  }
 }

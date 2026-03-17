@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import User, { IUser } from './user.model';
 
 export class AuthService {
@@ -16,5 +17,25 @@ export class AuthService {
     });
 
     return await user.save();
+  }
+
+  async login(username: string, password: string): Promise<{ user: IUser; token: string }> {
+    const user = await User.findOne({ username });
+    if (!user) {
+      throw new Error('Invalid credentials');
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      throw new Error('Invalid credentials');
+    }
+
+    const token = jwt.sign(
+      { id: user._id, username: user.username },
+      process.env.JWT_SECRET || 'fallback_secret',
+      { expiresIn: '1d' }
+    );
+
+    return { user, token };
   }
 }
