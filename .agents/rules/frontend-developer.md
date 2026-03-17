@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # Frontend Developer Rules
 
 ## 1. Code Quality & Architecture
@@ -39,6 +43,21 @@
 
 ## 7. Folder Structure Rule
 - **Client Directory**: All frontend application code MUST be stored and executed within the `client/` directory.
+- **Src Directory Structure**: Inside `client/src/`, follow this specific structure:
+  - `apis/`: API call definitions (e.g., axios instances, services).
+  - `assets/`: Static assets (images, fonts, global icons).
+  - `components/`: Reusable UI components (buttons, cards, modals).
+  - `configs/`: Configuration files (environment variables, global settings).
+  - `constants/`: Global constants, enums, or fixed strings.
+  - `hooks/`: Custom React hooks.
+  - `layouts/`: Layout components (Header, Footer, Sidebar).
+  - `pages/`: Page components (routed components).
+  - `routers/`: Routing configuration and provider.
+  - `stores/`: Global state management files (Zustand, Redux).
+  - `utils/`: Helper functions and utilities.
+  - `App.tsx`: Main application component.
+  - `index.css`: Global styles.
+  - `main.tsx`: Entry point.
 
 ## 8. Git & Workflow
 - **Branch Required**: You MUST NEVER code directly on the `main` or `master` branch.

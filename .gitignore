@@ -24,6 +24,4 @@ out/
 .DS_Store
 
 # Agent Workspace
-.agent/
-.agents/
 .gemini/
