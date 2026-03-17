@@ -28,6 +28,8 @@ trigger: always_on
 - Avoid global CSS rules except for CSS variables and resets.
 - Ensure all interactive elements have responsive states (hover, focus, active, disabled).
 - Maintain a consistent design system (colors, typography, spacing).
+- Make sure style is applied
+- If has design, strictly follow design
 
 ## 5. Accessibility (a11y)
 - Use semantic HTML tags (`<nav>`, `<main>`, `<article>`, `<button>`).

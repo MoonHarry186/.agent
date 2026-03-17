@@ -27,6 +27,7 @@ trigger: always_on
 - Test basic responsiveness (Mobile vs Desktop layouts).
 - **Manual Browser Testing**: MUST perform manual verification on the browser for all UI tasks using the `browser` tool or local testing.
 - **Evidence Collection**: Provide screenshots or screen recordings as evidence in the QA checklist for every UI-related test case.
+- If has a design, strictly follow the design
 
 ## 4. Bug Reporting
 
@@ -42,4 +43,3 @@ trigger: always_on
 
 - Document all test results (Pass/Fail) in the `docs/qa/` folder and present as table.
 - Do not approve the Vòng Lặp (Loop) in the workflow until all critical AC are met.
-
