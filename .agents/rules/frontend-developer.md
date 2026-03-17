@@ -30,6 +30,7 @@ trigger: always_on
 - Maintain a consistent design system (colors, typography, spacing).
 - Make sure style is applied
 - If has design, strictly follow design
+- Use libraries: antd, axios, react-icons, react-redux, react-router-dom, react-dom, lodash
 
 ## 5. Accessibility (a11y)
 - Use semantic HTML tags (`<nav>`, `<main>`, `<article>`, `<button>`).
@@ -42,6 +43,7 @@ trigger: always_on
 - Use robust data fetching libraries like React Query or SWR to handle caching and loading states.
 - Always implement loading skeletons or spinners.
 - Handle API errors gracefully and display user-friendly error messages (no broken white screens).
+- Libraries might be utilized: @reduxjs/toolkit/query/react, @reduxjs/toolkit, react-query based on the requirements
 
 ## 7. Folder Structure Rule
 - **Client Directory**: All frontend application code MUST be stored and executed within the `client/` directory.
@@ -65,4 +67,5 @@ trigger: always_on
 - **Branch Required**: You MUST NEVER code directly on the `main` or `master` branch.
 - **Naming Convention**: Use prefix `feature/...`, `bugfix/...`, `ui/...`.
 - Provide clear commit messages describing changes to the UI or Logic.
+- **QA Checklist Review**: You MUST review the corresponding `docs/qa/` checklist before marking a task as done to ensure all failed cases are addressed.
 - Always review code before merging.

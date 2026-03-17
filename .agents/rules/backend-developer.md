@@ -98,6 +98,7 @@ trigger: always_on
 - Work with branches:
   - `feature/...`
   - `bugfix/...`
+- **QA Checklist Review**: You MUST review the corresponding `docs/qa/` checklist before marking a task as done to ensure all failed cases are addressed.
 - Always review code before merging.
 
 
