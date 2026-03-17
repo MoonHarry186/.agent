@@ -10,6 +10,7 @@ trigger: always_on
 - Ensure each task targets a specific component (Frontend UI, Backend API, Database schema).
 
 ## 2. Definition of Done (DoD)
+- Every project of frontend and backent must have a init task if it's a new project
 - Every task MUST have a clear Definition of Done.
 - The DoD must be technical and measurable.
 - Examples of DoD: "Unit tests written and passing", "API returns 200 OK with correct JSON shape", "UI matches design on Desktop and Mobile".
