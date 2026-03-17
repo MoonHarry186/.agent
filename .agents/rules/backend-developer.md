@@ -5,6 +5,7 @@ trigger: always_on
 # Backend Developer Rules
 
 ## 1. Code Quality & Standards
+
 - Follow consistent coding conventions (naming, structure, formatting).
 - Use **Feature-based modules structure** rather than grouping purely by file type (e.g., group a feature's controller, service, and repository together).
 - Write clean, readable, maintainable code (not clever code).
@@ -13,6 +14,7 @@ trigger: always_on
 - Always handle errors properly (no silent failures).
 
 ## 2. API Design Principles
+
 - **Centralized Routing**: Must have a central route file (route tổng) to manage and aggregate all feature routes.
 - Follow RESTful conventions:
   - `GET /products`
@@ -36,6 +38,7 @@ trigger: always_on
   ```
 
 ## 3. Database Design
+
 - Use normalized structure (but don’t over-normalize).
 - Prefer separate tables for scalability (good call you already chose this 👍).
 - Use indexes for frequently queried fields.
@@ -43,6 +46,7 @@ trigger: always_on
 - Use migrations or versioning for schema changes.
 
 ## 4. Security Rules
+
 - Validate & sanitize all inputs.
 - Never expose sensitive data (passwords, tokens).
 - Use hashing (e.g., bcrypt) for passwords.
@@ -53,6 +57,7 @@ trigger: always_on
   - CSRF
 
 ## 5. Performance & Scalability
+
 - Avoid unnecessary queries (N+1 problem).
 - Use pagination for large datasets.
 - Cache when needed (Redis, memory cache).
@@ -60,6 +65,7 @@ trigger: always_on
 - Design for scalability from early stage (your POD app will need this).
 
 ## 6. Logging & Debugging
+
 - Log important events:
   - Errors
   - Requests
@@ -75,6 +81,7 @@ trigger: always_on
 - Never log sensitive data.
 
 ## 7. Testing
+
 - Write unit tests for business logic.
 - Write integration tests for APIs.
 - Ensure critical flows always work:
@@ -83,6 +90,7 @@ trigger: always_on
   - Order creation
 
 ## 8. Documentation
+
 - Every API must be documented (Swagger / Postman).
 - Include:
   - Endpoint
@@ -91,6 +99,7 @@ trigger: always_on
 - Keep docs updated (not “write once then forget”).
 
 ## 9. Git & Workflow
+
 - **Branch Required**: You MUST NEVER code directly on the `main` or `master` branch.
 - Use clear commit messages:
   - `feat: add product API`
@@ -100,6 +109,18 @@ trigger: always_on
   - `bugfix/...`
 - Always review code before merging.
 
+### 9.1. Tuân thủ Feature Workflow (Backend)
 
-## Folder Structure Rule
+- Backend developer **PHẢI** tuân theo chặt chẽ `Feature Workflow` trong `/.agents/workflows/feature-workflow.md`.
+- Khi làm backend cho một feature hoặc một task, luôn follow **Bước 6 – Vòng lặp (Loop): Backend**:
+  - **Code Backend**: Triển khai luồng Backend, API, DB đúng theo bản thiết kế (bước Techlead).
+  - **Loop (code → review → test → code)**:
+    - Code backend theo thiết kế.
+    - Gửi cho bot `techlead` review code (kiến trúc, chất lượng, bảo mật).
+    - Bắt buộc chạy test chức năng (tester) cho API & logic. Không được bỏ qua bước test.
+    - Nếu có issue → quay lại code, lặp đến khi backend ổn định.
+  - **Human review & approve**: Sau khi qua vòng bot + tester, HUMAN phải review & approve thay đổi backend.
+
+## 10. Folder Structure Rule
+
 - **Server Directory**: All backend application code MUST be stored and executed within the `server/` directory. Do not place backend source code in the root directory.

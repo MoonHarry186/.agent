@@ -1,10 +1,7 @@
----
-trigger: always_on
----
-
 # Frontend Developer Rules
 
 ## 1. Code Quality & Architecture
+
 - Use a component-based architecture (React, Next.js, etc.).
 - Keep components small, reusable, and single-responsibility.
 - Follow consistent naming conventions (PascalCase for components, camelCase for variables/functions).
@@ -12,18 +9,21 @@ trigger: always_on
 - Strongly type all props and state using TypeScript.
 
 ## 2. State Management
+
 - Use local state (`useState`, `useReducer`) when state is self-contained.
 - Use context or tools like Zustand/Redux only for truly global state.
 - Keep state as flat as possible.
 - Avoid passing props down more than 2-3 levels (Prop Drilling) without Context.
 
 ## 3. Performance
+
 - Implement lazy loading for routes and heavy components.
 - Optimize and compress images before rendering (use WebP, Next/Image).
 - Minimize re-renders by using `useMemo`, `useCallback`, and `React.memo` where appropriate.
 - Debounce or throttle frequent events (like scrolling or fast typing).
 
 ## 4. Styling & UI/UX
+
 - Use utility classes (TailwindCSS) or CSS Modules systematically.
 - Avoid global CSS rules except for CSS variables and resets.
 - Ensure all interactive elements have responsive states (hover, focus, active, disabled).
@@ -33,6 +33,7 @@ trigger: always_on
 - Use libraries: antd, axios, react-icons, react-redux, react-router-dom, react-dom, lodash
 
 ## 5. Accessibility (a11y)
+
 - Use semantic HTML tags (`<nav>`, `<main>`, `<article>`, `<button>`).
 - Provide `alt` text for all meaningful images.
 - Ensure all forms have labels.
@@ -40,12 +41,14 @@ trigger: always_on
 - Ensure proper color contrast.
 
 ## 6. Data Fetching & APIs
+
 - Use robust data fetching libraries like React Query or SWR to handle caching and loading states.
 - Always implement loading skeletons or spinners.
 - Handle API errors gracefully and display user-friendly error messages (no broken white screens).
 - Libraries might be utilized: @reduxjs/toolkit/query/react, @reduxjs/toolkit, react-query based on the requirements
 
 ## 7. Folder Structure Rule
+
 - **Client Directory**: All frontend application code MUST be stored and executed within the `client/` directory.
 - **Src Directory Structure**: Inside `client/src/`, follow this specific structure:
   - `apis/`: API call definitions (e.g., axios instances, services).
@@ -64,7 +67,32 @@ trigger: always_on
   - `main.tsx`: Entry point.
 
 ## 8. Git & Workflow
+
 - **Branch Required**: You MUST NEVER code directly on the `main` or `master` branch.
 - **Naming Convention**: Use prefix `feature/...`, `bugfix/...`, `ui/...`.
 - Provide clear commit messages describing changes to the UI or Logic.
 - Always review code before merging.
+
+### 8.1. Tuân thủ Feature Workflow (Frontend)
+
+- Frontend developer **PHẢI** tuân theo chặt chẽ `Feature Workflow` trong `/.agents/workflows/feature-workflow.md`.
+- Khi làm frontend cho một feature hoặc một task, luôn follow **Bước  -. **Vòng lặp (Loop): Frontend**
+   - **Loop (code → review → test → code)**:
+     - Code giao diện và luồng tương tác.
+     - **Review code (bot `techlead`)**: Techlead bot review cấu trúc component, performance, maintainability.
+     - **Test chức năng - `tester` (bắt buộc)**:
+     - Kiểm thử logic, CSS, responsive.
+     - **Case A – Task thay đổi UI/logic** (ảnh hưởng tới phần người dùng nhìn thấy hoặc business flow):
+       - **Browser Test chi tiết**: Test thực tế trên trình duyệt các màn hình bị ảnh hưởng.
+       - Quay phim/chụp ảnh làm bằng chứng khi cần, đặc biệt với flow quan trọng.
+     - **Case B – Task chỉ thay đổi cấu trúc (refactor, đổi folder, đổi tên file, tách component, gom module)**:
+       - Chạy các lệnh kỹ thuật:
+         - `npm run lint` (hoặc tương đương trong project)
+         - `npm run test` (nếu có test liên quan)
+         - `npm run build` (hoặc typecheck) để đảm bảo không vỡ import/compile.
+       - **Quick smoke test (tuỳ chọn)**: Mở ứng dụng, load 1–2 page chính để chắc chắn app không bị trắng / crash.
+       - Không bắt buộc quay phim/chụp ảnh nếu UI/flow không đổi.
+     - Quay lại bước code nếu phát hiện issue. Lặp cho đến khi frontend ổn định.
+   - **Human review & approve**: HUMAN review UI/UX và approve.
+   - **Push code lên nhánh**: Push code frontend lên remote branch. **KHÔNG tự động merge**.
+
