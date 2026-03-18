@@ -1,4 +1,14 @@
+---
+trigger: always_on
+---
+
 # Frontend Developer Rules
+
+## 0. Mission & Scope (Project-wide)
+
+- Deliver UI/features đúng design, đúng business flow, tích hợp API ổn định.
+- Skills có thể đa dạng nhưng **phải tuân thủ tuyệt đối** rule chung của dự án (đặc biệt: JavaScript-only, folder structure, API/error/notification standards, workflow).
+- Ưu tiên code đơn giản, rõ ràng, dễ maintain; tránh over-engineering.
 
 ## 1. Code Quality & Architecture
 
@@ -6,7 +16,7 @@
 - Keep components small, reusable, and single-responsibility.
 - Follow consistent naming conventions (PascalCase for components, camelCase for variables/functions).
 - Avoid deeply nested component trees; use composition.
-- Strongly type all props and state using TypeScript.
+- Define clear props/state contracts in JavaScript (validate where needed; document assumptions in code).
 
 ## 2. State Management
 
@@ -28,9 +38,9 @@
 - Avoid global CSS rules except for CSS variables and resets.
 - Ensure all interactive elements have responsive states (hover, focus, active, disabled).
 - Maintain a consistent design system (colors, typography, spacing).
-- Make sure style is applied
-- If has design, strictly follow design
-- Use libraries: antd, axios, react-icons, react-redux, react-router-dom, react-dom, lodash
+- Ensure style is applied consistently across states (loading/disabled/error).
+- If has design, strictly follow design.
+- Use existing project libraries only; do not introduce new dependencies unless requested.
 
 ## 5. Accessibility (a11y)
 
@@ -42,10 +52,10 @@
 
 ## 6. Data Fetching & APIs
 
-- Use robust data fetching libraries like React Query or SWR to handle caching and loading states.
-- Always implement loading skeletons or spinners.
-- Handle API errors gracefully and display user-friendly error messages (no broken white screens).
-- Libraries might be utilized: @reduxjs/toolkit/query/react, @reduxjs/toolkit, react-query based on the requirements
+- Follow the project standard API layer in `client/src/apis/` (no scattered `fetch` in UI).
+- Always implement UI states: loading / empty / error / success.
+- Handle API errors gracefully and display user-friendly messages (no broken white screens).
+- Ensure auth failures (401/403) are handled according to project behavior (redirect/login/logout).
 
 ## 7. Folder Structure Rule
 
@@ -62,9 +72,12 @@
   - `routers/`: Routing configuration and provider.
   - `stores/`: Global state management files (Zustand, Redux).
   - `utils/`: Helper functions and utilities.
-  - `App.tsx`: Main application component.
   - `index.css`: Global styles.
-  - `main.tsx`: Entry point.
+
+### File extensions (Required)
+
+- Use `.js` / `.jsx`
+- Do not create `.ts` / `.tsx`
 
 ## 8. Git & Workflow
 
@@ -76,23 +89,29 @@
 ### 8.1. Tuân thủ Feature Workflow (Frontend)
 
 - Frontend developer **PHẢI** tuân theo chặt chẽ `Feature Workflow` trong `/.agents/workflows/feature-workflow.md`.
-- Khi làm frontend cho một feature hoặc một task, luôn follow **Bước  -. **Vòng lặp (Loop): Frontend**
-   - **Loop (code → review → test → code)**:
-     - Code giao diện và luồng tương tác.
-     - **Review code (bot `techlead`)**: Techlead bot review cấu trúc component, performance, maintainability.
-     - **Test chức năng - `tester` (bắt buộc)**:
-     - Kiểm thử logic, CSS, responsive.
-     - **Case A – Task thay đổi UI/logic** (ảnh hưởng tới phần người dùng nhìn thấy hoặc business flow):
-       - **Browser Test chi tiết**: Test thực tế trên trình duyệt các màn hình bị ảnh hưởng.
-       - Quay phim/chụp ảnh làm bằng chứng khi cần, đặc biệt với flow quan trọng.
-     - **Case B – Task chỉ thay đổi cấu trúc (refactor, đổi folder, đổi tên file, tách component, gom module)**:
-       - Chạy các lệnh kỹ thuật:
-         - `npm run lint` (hoặc tương đương trong project)
-         - `npm run test` (nếu có test liên quan)
-         - `npm run build` (hoặc typecheck) để đảm bảo không vỡ import/compile.
-       - **Quick smoke test (tuỳ chọn)**: Mở ứng dụng, load 1–2 page chính để chắc chắn app không bị trắng / crash.
-       - Không bắt buộc quay phim/chụp ảnh nếu UI/flow không đổi.
-     - Quay lại bước code nếu phát hiện issue. Lặp cho đến khi frontend ổn định.
-   - **Human review & approve**: HUMAN review UI/UX và approve.
-   - **Push code lên nhánh**: Push code frontend lên remote branch. **KHÔNG tự động merge**.
+- Khi làm frontend cho một feature hoặc một task, luôn follow **Bước 7 – Vòng lặp (Loop): Frontend**
+  - **Loop (code → review → test → code)**:
+    - Code giao diện và luồng tương tác.
+    - **Review code (bot `techlead`)**: Techlead bot review cấu trúc component, performance, maintainability.
+    - **Test chức năng - `tester` (bắt buộc)**:
+    - Kiểm thử logic, CSS, responsive.
+    - **Case A – Task thay đổi UI/logic** (ảnh hưởng tới phần người dùng nhìn thấy hoặc business flow):
+      - **Browser Test chi tiết**: Test thực tế trên trình duyệt các màn hình bị ảnh hưởng.
+      - Quay phim/chụp ảnh làm bằng chứng khi cần, đặc biệt với flow quan trọng.
+    - **Case B – Task chỉ thay đổi cấu trúc (refactor, đổi folder, đổi tên file, tách component, gom module)**:
+      - Chạy các lệnh kỹ thuật:
+        - `npm run lint` (hoặc tương đương trong project)
+        - `npm run test` (nếu có test liên quan)
+        - `npm run build` (hoặc typecheck) để đảm bảo không vỡ import/compile.
+      - **Quick smoke test (tuỳ chọn)**: Mở ứng dụng, load 1–2 page chính để chắc chắn app không bị trắng / crash.
+      - Không bắt buộc quay phim/chụp ảnh nếu UI/flow không đổi.
+    - Quay lại bước code nếu phát hiện issue. Lặp cho đến khi frontend ổn định.
+  - **Human review & approve**: HUMAN review UI/UX và approve.
+  - **Push code lên nhánh**: Push code frontend lên remote branch. **KHÔNG tự động merge**.
 
+## 9. Definition of Done (Frontend)
+
+- UI matches design (desktop + mobile)
+- Handles states: loading/empty/error/success
+- Error + notification behaviors implemented per project rules
+- No runtime crashes; no blocking console errors
